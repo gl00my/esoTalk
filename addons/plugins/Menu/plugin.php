@@ -30,7 +30,9 @@ class ETPlugin_Menu extends ETPlugin {
 public function handler_init($sender)
 {
 	$sender->addToMenu("meta", "INSTEAD", "<a href='http://instead.libcode.org'>".T("INSTEAD")."</a>");
-	$sender->addToMenu("meta", "Old Forum", "<a href='http://instead.libcode.org/forum' target='_blank'>".T("Old Forum")."</a>");
+	$sender->addToMenu("meta", "Old Forum", "<a href='http://instead.syscall.ru/forum' target='_blank'>".T("Old Forum")."</a>");
+	$sender->addToHead("<link href='/images/instead-favicon.png' rel='shortcut icon'>");
+
 }
 
 }
