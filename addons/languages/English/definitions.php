@@ -384,7 +384,7 @@ $definitions["Viewing: %s"] = "Viewing: %s";
 $definitions["viewingPosts"] = "<b>%s-%s</b> of %s posts";
 
 $definitions["Warning"] = "Uh oh, something's not right!";
-$definitions["Welcome to esoTalk!"] = "Welcome to esoTalk!";
+$definitions["Welcome to esoTalk!"] = "Welcome to INSTEAD forum!";
 $definitions["We've logged you in and taken you straight to your forum's administration panel. You're welcome."] = "We've logged you in and taken you straight to your forum's administration panel. You're welcome.";
 $definitions["Write a reply..."] = "Write a reply...";
 
