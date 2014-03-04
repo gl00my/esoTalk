@@ -43,6 +43,7 @@ $(function() {
 			}
 		});
 
+		if ($post.find(".dropZone")[0]) {
 		var dragAndDropModule = new qq.DragAndDrop({
 			dropZoneElements: [$post.find(".dropZone")[0]],
 			classes: {
@@ -60,7 +61,7 @@ $(function() {
 				}
 			}
 		});
-
+		}
 		$post.on("click", ".attachments-edit .control-delete", function(e) {
 			e.preventDefault();
 			$.ETAjax({
@@ -76,7 +77,6 @@ $(function() {
 			e.preventDefault();
 			ETConversation.insertText($post.find("textarea") , "[attachment:"+$(this).data("id")+"]");
 		});
-
 	}
 
 	initUploadArea("reply");
