@@ -146,7 +146,7 @@ $definitions["Delete"] = "Удалить";
 $definitions["Deleted %s by %s"] = "%s удалено %s";
 $definitions["Disable"] = "Отключить";
 $definitions["Discard"] = "Удалить";
-$definitions["Don't have an account? <a href='%s' class='link-join'>Sign up!</a>"] = "У вас нет аккаунта? <a href='%s' class='link-join'>Зарегистрируйтесь!</a>";
+$definitions["Don't have an account? <a href='%s' class='link-join'>Sign up!</a>"] = "Нет аккаунта? <a href='%s' class='link-join'>Зарегистрируйтесь!</a>";
 $definitions["Don't repeat"] = "Не повторять";
 
 $definitions["Edit Channel"] = "Редактировать канал";
