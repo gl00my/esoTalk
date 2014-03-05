@@ -524,8 +524,8 @@ $definitions["email.post.subject"] = "Есть новый комментарий
 // These gambits are pretty much evaluated as-they-are.
 // tag:, author:, contributor:, and quoted: are combined with a value after the colon (:).
 // For example: tag:video games, author:myself
-$definitions["gambit.author:"] = "автор: ";
-$definitions["gambit.contributor:"] = "участник: ";
+$definitions["gambit.author:"] = "автор:";
+$definitions["gambit.contributor:"] = "участник:";
 $definitions["gambit.member"] = "имя";
 $definitions["gambit.myself"] = "я";
 $definitions["gambit.draft"] = "черновики";
@@ -550,14 +550,14 @@ $definitions["gambit.active today"] = "активные сегодня"; // what
 $definitions["gambit.active 1 day"] = "активные 1 день"; // what it actually evaluates to
 
 $definitions["gambit.has replies"] = "с комментариями";
-$definitions["gambit.has >0 replies"] = "содержит ›0 комментариев";
-$definitions["gambit.has >10 replies"] = "содержит ›10 комментариев";
+$definitions["gambit.has >0 replies"] = "содержит >0 комментариев";
+$definitions["gambit.has >10 replies"] = "содержит >10 комментариев";
 
 $definitions["gambit.has no replies"] = "без комментариев";
 $definitions["gambit.has 0 replies"] = "содержит 0 комментариев";
 
 $definitions["gambit.dead"] = "мёртвые";
-$definitions["gambit.active >30 day"] = "активные ›30 дней";
+$definitions["gambit.active >30 day"] = "активные >30 дней";
 
 // Units of time
 // These are used in the active gambit.
@@ -587,7 +587,7 @@ $definitions["gambit.active last ? days"] = "{$definitions["gambit.active"]} {$d
 
 // This is similar to the regular expression for the active gambit, but for the "has n reply(s)" gambit.
 // Usually you just need to change the "has" and "repl".
-$definitions["gambit.gambitHasNReplies"] = "/^имеет *(?<a>>|<|>=|<=)? *(?<b>\d+) *сообщ/";
+$definitions["gambit.gambitHasNReplies"] = "/^содержит *(?<a>>|<|>=|<=)? *(?<b>\d+) *комм/";
 
 $definitions["Old Forum"] = "Старый Форум";
 $definitions["Spoiler"] = "Спойлер";
