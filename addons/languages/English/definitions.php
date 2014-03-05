@@ -528,8 +528,8 @@ $definitions["email.post.body"] = "<p><strong>%1\$s</strong> has replied to a co
 // These gambits are pretty much evaluated as-they-are.
 // tag:, author:, contributor:, and quoted: are combined with a value after the colon (:).
 // For example: tag:video games, author:myself
-$definitions["gambit.author:"] = "author:";
-$definitions["gambit.contributor:"] = "contributor:";
+$definitions["gambit.author:"] = "author: ";
+$definitions["gambit.contributor:"] = "contributor: ";
 $definitions["gambit.member"] = "member";
 $definitions["gambit.myself"] = "myself";
 $definitions["gambit.draft"] = "draft";

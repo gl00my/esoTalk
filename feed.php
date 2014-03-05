@@ -9,7 +9,7 @@ $username=$config["esoTalk.database.user"];
 $password=$config["esoTalk.database.password"];
 $db_name=$config["esoTalk.database.dbName"];
 
-$url="http://instead.libcode.org/talk/";
+$url="http://instead.syscall.ru/talk/";
 
 function sanitizeHTML($value)
 {
