@@ -225,7 +225,10 @@ span.highlight {background:#fdef34; border:1px solid #fcef98; padding:1px 3px; b
 .tabs {margin:0; padding:2px; line-height:1em; overflow:hidden}
 .tabs li {float:left; list-style-type:none; margin:4px 7px 4px 0}
 .tabs li > a, .tabs li > span {padding:4px 6px 3px; white-space:nowrap; font-size:85%; display:block}
-.tabs li > a {color:#666; cursor:pointer; border-radius:3px}
+/* .tabs li > a {color:#666; cursor:pointer; border-radius:3px} */
+
+.tabs li > a {color:#666; cursor:pointer; border-radius:3px; border:1px solid #ffffff; margin:-1px; text-decoration:none}
+
 .tabs li > span {color:#888}
 .tabs li a:hover {border:1px solid #eee; margin:-1px; text-decoration:none}
 .tabs li.selected a {background-color:#fff; border:1px solid #d5d5d5; margin:-1px; color:#000; -webkit-box-shadow:0 1px 0 rgba(0, 0, 0, 0.03); box-shadow:0 1px 0 rgba(0, 0, 0, 0.03)}
@@ -571,7 +574,7 @@ code {background:#eee}
 
 
 /* Login */
-#loginSheet {width:470px}
+#loginSheet {width:490px} /* 470px was */
 #loginSheet .link-forgot {margin-left:5px}
 
 
