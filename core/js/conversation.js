@@ -596,10 +596,10 @@ redisplayAvatars: function() {
 		else
 			$(this).find("div.avatar").show();
 
-		prevId = $(this).find("div.post").data("memberid");
+		if (! $(this).find("div.deleted").data("memberid"))
+			prevId = $(this).find("div.post").data("memberid");
 
 	});
-
 },
 
 // Delete a post.

@@ -109,7 +109,6 @@ public function general()
 	// Add the avatar section and field to the form.
 	$form->addSection("avatar", T("Avatar"));
 	$form->addField("avatar", "avatar", array($this, "fieldAvatar"), array($this, "saveAvatar"));
-
 	// If there's more than 1 language installed, add the language section and field to the form.
 	if (count(ET::getLanguages()) > 1) {
 		$form->addSection("language", T("Forum language"));

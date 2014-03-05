@@ -8,8 +8,8 @@ body {
 } 
 
 body, input, textarea, select {
-//    font-family:open sans, Verdana, sans-serif, Helvetica;
-    font-family:open sans, lucida grande,lucida sans unicode,helvetica,arial,sans-serif
+//    font-family:open sans, Verdana, sans-serif, Helvetica, arial;
+    font-family:open sans, lucida grande,lucida sans unicode,helvetica,arial,sans-serif;
 } 
 
 input, textarea, select {

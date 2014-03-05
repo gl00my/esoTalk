@@ -1230,6 +1230,7 @@ protected function formatPostForTemplate($post, $conversation)
 		"id" => "p".$post["postId"],
 		"title" => memberLink($post["memberId"], $post["username"]),
 		"avatar" => (!$post["deleteMemberId"] and $avatar) ? "<a href='".URL(memberURL($post["memberId"], $post["username"]))."'>$avatar</a>" : false,
+
 		"class" => $post["deleteMemberId"] ? array("deleted") : array(),
 		"info" => array(),
 		"controls" => array(),
