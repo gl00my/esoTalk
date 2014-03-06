@@ -592,3 +592,6 @@ $definitions["gambit.gambitHasNReplies"] = "/^содержит *(?<a>>|<|>=|<=)?
 $definitions["Old Forum"] = "Старый Форум";
 $definitions["Spoiler"] = "Спойлер";
 $definitions["Mark as unread"] = "Отметить как непрочитанную";
+
+$definitions["Older"] = "Старые";
+$definitions["Newer"] = "Новые";
