@@ -63,13 +63,15 @@ public function handler_conversationController_getEditControls($sender, &$contro
  */
 public function handler_format_beforeFormat($sender)
 {
+	include_once('/usr/share/php-geshi/geshi.php');
+
 	$hideBlock = create_function('&$blockFixedContents, $contents', '
 		$geshi = new GeSHi(htmlspecialchars_decode($contents), "Lua", "/usr/share/php-geshi/geshi");
 		$blockFixedContents[] = $geshi->parse_code();
 		return "</p><pre><code></code></pre><p>";');
 	$hideInline = create_function('&$inlineFixedContents, $contents', '
 		$geshi = new GeSHi(htmlspecialchars_decode($contents), "Lua", "/usr/share/php-geshi/geshi");
-		$inlineFixedContents[] = $geshi->parse_code();;
+		$inlineFixedContents[] = $geshi->parse_code();
 		return "<code></code>";');
 
 	$this->blockFixedContents = array();
@@ -77,7 +79,6 @@ public function handler_format_beforeFormat($sender)
 
 	$regexp = "/(.*)^\s*\[code\]\n?(.*?)\n?\[\/code]$/imse";
 	while (preg_match($regexp, $sender->content)) {
-		include_once('/usr/share/php-geshi/geshi.php');
 		if ($sender->inline) $sender->content = preg_replace($regexp, "'$1' . \$hideInline(\$this->inlineFixedContents, '$2')", $sender->content);
 		else $sender->content = preg_replace($regexp, "'$1' . \$hideBlock(\$this->blockFixedContents, '$2')", $sender->content);
 	}
