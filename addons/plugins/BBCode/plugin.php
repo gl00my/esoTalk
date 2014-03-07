@@ -67,10 +67,12 @@ public function handler_format_beforeFormat($sender)
 
 	$hideBlock = create_function('&$blockFixedContents, $contents', '
 		$geshi = new GeSHi(htmlspecialchars_decode($contents), "Lua", "/usr/share/php-geshi/geshi");
+		$geshi->set_header_type(GESHI_HEADER_PRE);
 		$blockFixedContents[] = $geshi->parse_code();
 		return "</p><pre><code></code></pre><p>";');
 	$hideInline = create_function('&$inlineFixedContents, $contents', '
 		$geshi = new GeSHi(htmlspecialchars_decode($contents), "Lua", "/usr/share/php-geshi/geshi");
+		$geshi->set_header_type(GESHI_HEADER_NONE);
 		$inlineFixedContents[] = $geshi->parse_code();
 		return "<code></code>";');
 
@@ -83,7 +85,7 @@ public function handler_format_beforeFormat($sender)
 		else $sender->content = preg_replace($regexp, "'$1' . \$hideBlock(\$this->blockFixedContents, '$2')", $sender->content);
 	}
 
-	// Inline-level [fixed] tags will become <code>.
+		// Inline-level [fixed] tags will become <code>.
 	$sender->content = preg_replace("/\[code\]\n?(.*?)\n?\[\/code]/ise", "\$hideInline(\$this->inlineFixedContents, '$1')", $sender->content);
 }
 
@@ -150,10 +152,10 @@ public function linksCallback($matches)
  */
 public function handler_format_afterFormat($sender)
 {
-	// Retrieve the contents of the inline <code> tags from the array in which they are stored.
-	if ($sender->inline) $sender->content = preg_replace("/<code><\/code>/ie", "'' . array_shift(\$this->inlineFixedContents) . ''", $sender->content);
 	// Retrieve the contents of the block <pre> tags from the array in which they are stored.
 	$sender->content = preg_replace("/<pre><code><\/code><\/pre>/ie", "'' . array_pop(\$this->blockFixedContents) . ''", $sender->content);
+	// Retrieve the contents of the inline <code> tags from the array in which they are stored.
+	$sender->content = preg_replace("/<code><\/code>/ie", "'' . array_shift(\$this->inlineFixedContents) . ''", $sender->content);
 
 }
 
