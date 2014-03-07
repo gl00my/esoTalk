@@ -155,6 +155,7 @@ class ETPlugin_Profiles extends ETPlugin {
 				default:
 					$field["data"] = ET::formatter()->init($field["data"])->inline(true)->format()->get();
 			}
+			$field["name"] = T($field["name"]);
 		}
 
 		$sender->data("fields", $fields);
@@ -229,7 +230,7 @@ class ETPlugin_Profiles extends ETPlugin {
 
 		foreach ($fields as $field) {
 			$key = "profile_".$field["fieldId"];
-			$form->addSection($key, $field["name"]);
+			$form->addSection($key, T($field["name"]));
 			$form->setValue($key, $field["data"]);
 			$form->addField($key, $key, array($this, "field", $field), array($this, "saveField"));
 		}
@@ -253,7 +254,7 @@ class ETPlugin_Profiles extends ETPlugin {
 			default:
 				$input = $form->input($key, "text");
 		}
-		return $input.($field["description"] ? "<br><small>".$field["description"]."</small>" : "");
+		return $input.($field["description"] ? "<br><small>".T($field["description"])."</small>" : "");
 	}
 
 }

@@ -323,7 +323,7 @@ $definitions["Save Draft"] = "Сохранить черновик";
 $definitions["Search conversations..."] = "Искать обсуждения...";
 $definitions["Search within this conversation..."] = "Искать в этом обсуждении...";
 $definitions["Search"] = "Искать";
-$definitions["See the private conversations I've had with %s"] = "Просмотреть мои частные обсуждения с %s";
+$definitions["See the private conversations I've had with %s"] = "Просмотреть личные обсуждения с %s";
 $definitions["Set a New Password"] = "Установка нового пароля";
 $definitions["Settings"] = "Настройки";
 $definitions["Show an image in the header"] = "Показывать логотип в заголовке";
@@ -595,3 +595,12 @@ $definitions["Mark as unread"] = "Отметить как непрочитанн
 
 $definitions["Older"] = "Старые";
 $definitions["Newer"] = "Новые";
+$definitions["Change your avatar on <a href='http://gravatar.com' target='_blank'>Gravatar.com</a>."] = "Поменять аватарку на <a href='http://gravatar.com' target='_blank'>Gravatar.com</a>.";
+$definitions["Don't allow other users to see when I am online"] = "Не показывать другим пользователям, что вы на форуме."; 
+$definitions["Privacy"] = "Приватность";
+$definitions["Email me when someone posts in a conversation I have followed"] = "Сообщать письмом, когда кто-то написал в теме, котору я зафолловил(а)";
+$definitions["Email me when there is a new post by a member I have followed"] = "Сообщить письмом, при сообщениях от участника, которого я зафолловил(а)";
+$definitions["Email me when someone posts in a channel I have followed"] = "Сообщить письмом, когда кто-то написал в канале, который я зафолловил(а)";
+$definitions["Email me when someone mentions me in a post"] = "Сообщать письмом, при упоминании меня в сообещениях";
+$definitions["Automatically follow conversations that I reply to"] = "Автоматически фолловить темы, в которых я отвечаю";
+$definitions["Automatically follow private conversations that I'm added to"] = "Автоматически фолловить личные темы в которых я участвую";
