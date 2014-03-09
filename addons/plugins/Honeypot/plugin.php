@@ -68,7 +68,7 @@ class ETPlugin_Honeypot extends ETPlugin {
 					"account" => ACCOUNT_MEMBER
 				);
 
-				if (!C("esoTalk.registration.requireEmailConfirmation")) $data["confirmedEmail"] = true;
+				if (!C("esoTalk.registration.requireEmailConfirmation")) $data["confirmed"] = true;
 				else $data["resetPassword"] = md5(uniqid(rand()));
 
 				$model = ET::memberModel();
