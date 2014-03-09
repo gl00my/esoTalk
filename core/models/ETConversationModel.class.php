@@ -782,11 +782,36 @@ public function delete($wheres = array())
 			->where("memberId = (".ET::SQL()->select("startMemberId")->from("conversation")->where("conversationId", $id)->get().")")
 			->exec();
 
+		$row = ET::SQL()->select("countPosts, channelId")->from("conversation")->where("conversationId", $id)->exec()->firstRow();
+
+		$countPosts = $row["countPosts"];
+		$channelId = $row["channelId"];
+
 		ET::SQL()
 			->update("channel")
+			->set("countPosts", "GREATEST(0, CAST(countPosts AS SIGNED) - ".$countPosts.")", false)
 			->set("countConversations", "GREATEST(0, CAST(countConversations AS SIGNED) - 1)", false)
-			->where("channelId = (".ET::SQL()->select("channelId")->from("conversation")->where("conversationId", $id)->get().")")
+			->where("channelId = (".$channelId.")")
 			->exec();
+
+		// Delete attachments
+
+		$rows = ET::SQL()
+			->select("a.attachmentId")
+			->from("attachment a")
+			->from("post p", "a.postId=p.postId", "left")
+			->where("p.conversationId=$id")->exec()->allRows();
+
+		$amodel = ET::getInstance("attachmentModel");
+
+		if ($amodel) {
+			foreach ($rows as $row) {
+				$aid = $row["attachmentId"];
+				$attachment = $amodel->getById($aid);
+				$amodel->deleteById($aid);
+				@unlink($amodel->path().$attachmentId.$attachment["secret"]);
+			}
+		}
 	}
 
 	// Really, we should decrease post counts as well, but I'll leave that for now.
