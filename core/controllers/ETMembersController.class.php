@@ -229,7 +229,7 @@ public function create()
 				"email" => $form->getValue("email"),
 				"password" => $form->getValue("password"),
 				"account" => ACCOUNT_MEMBER,
-				"confirmedEmail" => true
+				"confirmed" => true
 			);
 
 			$model = ET::memberModel();
