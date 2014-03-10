@@ -1186,6 +1186,8 @@ public function deletePost($postId = false)
 		}
 		return;
 	}
+	if (!ET::$session->isAdmin())
+		return;
 
 	ET::$database->beginTransaction();
 
@@ -1378,7 +1380,8 @@ protected function formatPostForTemplate($post, $conversation)
 		// If the user can edit the post, add a restore control.
 		if ($canEdit) {
 			$formatted["controls"][] = "<a href='".URL("conversation/restorePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Restore")."' class='control-restore'><i class='icon-reply'></i></a>";
-			$formatted["controls"][] = "<a href='".URL("conversation/deletePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Delete")."' class='control-delete'><i class='icon-remove'></i></a>";
+			if (ET::$session->isAdmin())
+				$formatted["controls"][] = "<a href='".URL("conversation/deletePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Delete")."' class='control-delete'><i class='icon-remove'></i></a>";
 		}
 	}
 
