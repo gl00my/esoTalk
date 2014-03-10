@@ -8,8 +8,8 @@ date_default_timezone_set( 'Europe/Moscow' );
 $username=$config["esoTalk.database.user"];
 $password=$config["esoTalk.database.password"];
 $db_name=$config["esoTalk.database.dbName"];
+$url=$config["esoTalk.baseURL"];
 
-$url="http://instead.syscall.ru/talk/";
 
 function sanitizeHTML($value)
 {
@@ -32,10 +32,10 @@ echo ("<html>");
 echo ("<body>");
 while (list($postId,$filename) = mysql_fetch_row($result)) {
       if (!mysql_fetch_row(mysql_query("SELECT p.postId FROM et_post p where p.postId = $postId"))){
-	     echo("<a href='http://instead.syscall.ru/talk/".postURL($postId)."'>".$filename."</a> - orphan deleted<br/>\n");
+	     echo("<a href='$url".postURL($postId)."'>".$filename."</a> - orphan deleted<br/>\n");
 	     mysql_query("DELETE FROM et_attachment WHERE postId = $postId");
       } else {
-	      echo("<a href='http://instead.syscall.ru/talk-test/".postURL($postId)."'>".$filename."</a><br/>\n");
+	      echo("<a href='$url".postURL($postId)."'>".$filename."</a><br/>\n");
       }
 
 }
