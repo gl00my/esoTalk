@@ -1172,20 +1172,99 @@ public function editPost($postId = false)
 public function deletePost($postId = false)
 {
 	if (!($post = $this->getPostForEditing($postId)) or !$this->validateToken()) return;
-
-	ET::postModel()->deletePost($post);
-
-	// Normally, redirect back to the conversation.
-	if ($this->responseType === RESPONSE_TYPE_DEFAULT) {
-		redirect(URL(R("return", postURL($postId))));
-	}
-
-	// For an AJAX request, render the post view.
-	elseif ($this->responseType === RESPONSE_TYPE_AJAX) {
-		$this->data("post", $this->formatPostForTemplate($post, $post["conversation"]));
-		$this->render("conversation/post");
+	if (!$post["deleteMemberId"]) {
+		ET::postModel()->deletePost($post);
+		// Normally, redirect back to the conversation.
+		if ($this->responseType === RESPONSE_TYPE_DEFAULT) {
+			redirect(URL(R("return", postURL($postId))));
+		}
+		// For an AJAX request, render the post view.
+		elseif ($this->responseType === RESPONSE_TYPE_AJAX) {
+			$this->data("post", $this->formatPostForTemplate($post, $post["conversation"]));
+			$this->render("conversation/post");
+			return;
+		}
 		return;
 	}
+
+	ET::$database->beginTransaction();
+
+
+	$memberId = $post["memberId"]; 
+	$conversationId = $post["conversationId"];
+
+	$channelId = ET::SQL()
+		->select("channelId")
+		->from("conversation")
+		->where("conversationId", $conversationId)
+		->exec()->result();
+
+	if (!$channelId) {
+		ET::$database->rollbackTransaction();
+		return;
+	}
+
+	if (!ET::SQL()
+		->update("channel")
+		->set("countPosts", "GREATEST(0, CAST(countPosts AS SIGNED) - 1)", false)
+		->where("channelId = (".$channelId.")")
+		->exec()) {
+		ET::$database->rollbackTransaction();
+		return;
+	}
+
+	if (!ET::SQL()
+		->update("conversation")
+		->set("countPosts", "countPosts - 1", false)
+		->where("conversationid", $conversationId)
+		->exec()) {
+		ET::$database->rollbackTransaction();
+		return;
+	}
+
+	if (!ET::postModel()->deleteById($postId)) {
+		ET::$database->rollbackTransaction();
+		return;
+	}
+
+	$rows = ET::SQL()
+		->select("attachmentId")
+		->from("attachment")
+		->where("postId", $postId)
+		->exec()
+		->allRows();
+
+	$amodel = ET::getInstance("attachmentModel");
+
+	foreach ($rows as $row) {
+		$aid = $row["attachmentId"];
+		$attachment = $amodel->getById($aid);
+		$amodel->deleteById($aid);
+		@unlink($amodel->path().$attachmentId.$attachment["secret"]);
+	}
+
+	$res = ET::SQL()
+		->select("memberId, time")
+		->from("post")
+		->where("conversationId",$conversationId)
+		->orderBy("time DESC")
+		->limit(1)
+		->exec()
+		->firstRow();
+	if ($res) {
+		$endId = $res["memberId"];
+		$endTime = $res["time"];
+		if ($endId && $endTime) {
+			ET::SQL()
+			->update("conversation")
+			->set("lastPostMemberId", $endId, false)
+			->set("lastPostTime", $endTime, false)
+			->where("conversationid", $conversationId)
+			->exec();
+		}
+	}
+	ET::$database->commitTransaction();
+	return;
 }
 
 
@@ -1288,7 +1367,6 @@ protected function formatPostForTemplate($post, $conversation)
 			$formatted["controls"][] = "<a href='".URL("conversation/editPost/".$post["postId"])."' title='".T("Edit")."' class='control-edit'><i class='icon-edit'></i></a>";
 			$formatted["controls"][] = "<a href='".URL("conversation/deletePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Delete")."' class='control-delete'><i class='icon-remove'></i></a>";
 		}
-
 	}
 
 	// But if the post IS deleted...
@@ -1298,8 +1376,10 @@ protected function formatPostForTemplate($post, $conversation)
 		if ($post["deleteMemberId"]) $formatted["controls"][] = "<span>".sprintf(T("Deleted %s by %s"), "<span title='".date(T("date.full"), $post["deleteTime"])."'>".relativeTime($post["deleteTime"], true)."</span>", name($post["deleteMemberName"]))."</span>";
 
 		// If the user can edit the post, add a restore control.
-		if ($canEdit)
+		if ($canEdit) {
 			$formatted["controls"][] = "<a href='".URL("conversation/restorePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Restore")."' class='control-restore'><i class='icon-reply'></i></a>";
+			$formatted["controls"][] = "<a href='".URL("conversation/deletePost/".$post["postId"]."?token=".ET::$session->token)."' title='".T("Delete")."' class='control-delete'><i class='icon-remove'></i></a>";
+		}
 	}
 
 	$this->trigger("formatPostForTemplate", array(&$formatted, $post, $conversation));
