@@ -590,7 +590,7 @@ $definitions["gambit.active last ? days"] = "{$definitions["gambit.active"]} {$d
 $definitions["gambit.gambitHasNReplies"] = "/^содержит *(?<a>>|<|>=|<=)? *(?<b>\d+) *комм/";
 
 $definitions["Old Forum"] = "Старый Форум";
-$definitions["Spoiler"] = "Спойлер";
+$definitions["Spoiler!"] = "Спойлер!";
 $definitions["Mark as unread"] = "Отметить как непрочитанную";
 
 $definitions["Older"] = "Старые";
