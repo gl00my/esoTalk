@@ -29,6 +29,7 @@ mysql_set_charset('utf8');
 $result = mysql_query("SELECT a.postId,a.filename FROM et_attachment a")
     or die ("Can't do select." . mysql_error());
 echo ("<html>");
+echo ("<head><meta charset='utf-8'></head>");
 echo ("<body>");
 while (list($postId,$filename) = mysql_fetch_row($result)) {
       if (!mysql_fetch_row(mysql_query("SELECT p.postId FROM et_post p where p.postId = $postId"))){
