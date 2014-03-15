@@ -29,8 +29,15 @@ class ETPlugin_Menu extends ETPlugin {
  */
 public function handler_init($sender)
 {
-	$sender->addToMenu("meta", "INSTEAD", "<a href='http://instead.syscall.ru'>".T("INSTEAD")."</a>");
-	$sender->addToMenu("meta", "Old Forum", "<a href='http://instead.syscall.ru/forum' target='_blank'>".T("Old Forum")."</a>");
+	$sender->addToMenu("main", "instead", "<a href='http://instead.syscall.ru' class='link-instead'>".T("INSTEAD")."</a>");
+	$sender->addToMenu("main", "wiki", "<a href='http://instead.syscall.ru/wiki' class='link-wiki'>".T("WIKI")."</a>");
+	$sender->addToMenu("main", "insteadgames", "<a href='http://instead-games.ru' class='link-insteadgames'>".T("Instead • games")."</a>");
+	$sender->addToMenu("main", "oldforum", "<a href='http://instead.syscall.ru/forum' class='link-oldforum'>".T("Old Forum")."</a>");
+	$sender->addToMenu("main", "github", "<a href='http://github.com/instead-hub/instead' class='link-github'>".T("GitHub")."</a>");
+
+	$sender->addToMenu("meta", "instead", "<a href='http://instead.syscall.ru'>".T("INSTEAD")."</a>");
+//	$sender->addToMenu("meta", "instead-games", "<a href='http://instead-games.ru'>".T("Instead • games")."</a>");
+//	$sender->addToMenu("meta", "oldforum", "<a href='http://instead.syscall.ru/forum' target='_blank'>".T("Old Forum")."</a>");
 	$sender->addToHead("<link href='/images/instead-favicon.png' rel='shortcut icon'>");
 	$sender->addToHead("<link rel='alternate' type='application/rss+xml' title='INSTEAD Community' href='http://instead.syscall.ru/talk/feed.php'>");
 

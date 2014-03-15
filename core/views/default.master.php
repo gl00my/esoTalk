@@ -43,14 +43,17 @@ if (!defined("IN_ESOTALK")) exit;
 
 <h1 id='forumTitle'><a href='<?php echo URL(""); ?>'><?php echo $data["forumTitle"]; ?></a></h1>
 
-<ul id='mainMenu' class='menu'>
-<?php if (!empty($data["mainMenuItems"])) echo $data["mainMenuItems"]; ?>
-</ul>
-
 <ul id='userMenu' class='menu'>
 <?php echo $data["userMenuItems"]; ?>
 <li><a href='<?php echo URL("conversation/start"); ?>' class='link-newConversation button'><?php echo T("New Conversation"); ?></a></li>
 </ul>
+
+<div>
+<ul id='mainMenu' class='menu'>
+<?php if (!empty($data["mainMenuItems"])) echo $data["mainMenuItems"]; ?>
+</ul>
+</div>
+
 
 </div>
 </div>
