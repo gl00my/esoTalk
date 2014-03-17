@@ -33,6 +33,7 @@ public function handler_init($sender)
 	$sender->addToMenu("main", "wiki", "<a href='http://instead.syscall.ru/wiki' class='link-wiki'>".T("WIKI")."</a>");
 	$sender->addToMenu("main", "insteadgames", "<a href='http://instead-games.ru' class='link-insteadgames'>".T("Instead • games")."</a>");
 	$sender->addToMenu("main", "oldforum", "<a href='http://instead.syscall.ru/forum' class='link-oldforum'>".T("Old Forum")."</a>");
+
 	$sender->addToMenu("main", "github", "<a href='http://github.com/instead-hub/instead' class='link-github'>".T("GitHub")."</a>");
 
 	$sender->addToMenu("meta", "instead", "<a href='http://instead.syscall.ru'>".T("INSTEAD")."</a>");
