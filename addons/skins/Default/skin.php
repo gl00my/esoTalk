@@ -35,7 +35,9 @@ public function handler_init($sender)
 	$sender->addCSSFile("core/skin/base.css", true);
 	$sender->addCSSFile("core/skin/font-awesome.css", true);
 	$sender->addCSSFile($this->getResource("styles.css"), true);
-
+	if (ET::$session->preference("darkTheme")) {
+		$sender->addCSSFile($this->getResource("dark.css"), true);
+	}
 	// If we're viewing from a mobile browser, add the mobile CSS and change the master view.
 	if ($isMobile = isMobileBrowser()) {
 		$sender->addCSSFile($this->getResource("mobile.css"), true);

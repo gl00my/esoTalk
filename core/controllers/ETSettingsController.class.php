@@ -117,6 +117,10 @@ public function general()
 		$form->addField("language", "language", array($this, "fieldLanguage"), array($this, "saveLanguage"));
 	}
 
+	$form->addSection("theme", T("Theme"));
+	$form->setValue("darkTheme", ET::$session->preference("darkTheme"));
+	$form->addField("theme", "darkTheme", array($this, "fieldDarkTheme"), array($this, "saveBoolPreference"));
+
 	$form->addSection("notifications", T("Notifications"));
 
 	// Add the "email me when I'm added to a private conversation" field.
@@ -267,6 +271,11 @@ public function fieldEmailMention($form)
 	return "<label class='checkbox'>".$form->checkbox("mention")." ".T("Email me when someone mentions me in a post")."</label>";
 }
 
+
+public function fieldDarkTheme($form)
+{
+	return "<label class='checkbox'>".$form->checkbox("darkTheme")." ".T("Use dark colors")."</label>";
+}
 
 /**
  * Return the HTML to render the "automatically star conversations that I reply to" field in the general

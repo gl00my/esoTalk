@@ -606,3 +606,6 @@ $definitions["Automatically follow conversations that I reply to"] = "Автом
 $definitions["Automatically follow private conversations that I'm added to"] = "Автоматически следить за личными темами, в которых я участвую";
 $definitions["Follow"] = "Следить";
 $definitions["Following"] = "Слежу";
+$definitions["Theme"] = "Тема";
+$definitions["Use dark colors"] = "Использовать темные цвета";
+$definitions["Choose a Channel"] = "Выберите канал";

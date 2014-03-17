@@ -461,6 +461,11 @@ public function render($view = "")
 			$logo = C("esoTalk.forumLogo");
 			$title = C("esoTalk.forumTitle");
 			if ($logo) $size = getimagesize($logo);
+
+			if (ET::$session->preference("darkTheme")) {
+				$logo = $logo . ".dark";
+			}
+
 			$data["forumTitle"] = $logo ? "<img src='".getWebPath($logo)."' {$size[3]} alt='$title'/>" : $title;
 
 			// Add the details for the "back" button.
