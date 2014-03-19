@@ -1,0 +1,225 @@
+/*
+Copyright 2014 National Spider (http://nationalspider.com) under the GPL license.
+Spidera Skin is my contribution to an open-source forum script called esoTalk. 
+*/
+
+/* Global */
+body {font-size:14px; font-weight:400; margin:0; overflow-y:scroll; background:#333; background-image:url('dark01.png'); background-repeat:repeat; background-attachment:fixed; background-position:center;  color:#bbb;}
+body, input, textarea, select {font-family: Open Sans, sans-serif, lucida grande,lucida sans unicode,helvetica,arial}
+input, textarea, select {font-size:100%}
+
+
+
+/* Links */
+a {text-decoration:none; color:#2ECC71}
+a:hover {text-decoration:none; color:#1E7945}
+a:active {color:#2ECC71}
+
+
+/* Inline styles */
+small {font-size:85%}
+
+
+/* Block styles */
+h2 {font-size:160%; font-weight:normal}
+h3 {font-size:115%; font-weight:bold}
+p, ul, pre {line-height:1.6em}
+.bodyHeader h1 {line-height:1.5em; font-size:140%; font-weight:bold}
+
+
+/* Layout */
+#hdr-content, #body-content, #ftr-content {margin:0 auto; color:#bbb; min-width:760px; max-width:1100px; padding:0 30px}
+#body-content, #ftr-content {background:rgba(255, 255, 255, 0.05);}
+#body-content {padding-bottom:20px; padding-top:10px}
+#body {padding-top:58px}
+
+
+/* Menus (inline lists) */
+.menu {font-size:90%; list-style-type:none; margin-top:0; margin-bottom:0; padding:0; line-height:1}
+.menu > li {display:inline-block}
+
+
+/* Header */
+#hdr {background:rgba(51, 51, 51,0.9); -webkit-box-shadow: 0 0 0 0px white, 0 1px 5px black; -moz-box-shadow: 0 0 0 0px white, 0 1px 5px black; box-shadow: 0 0 0 0px white, 0 1px 5px black; border-bottom:0px solid; color:#333; position:fixed; width:100%; z-index:100}
+#hdr-inner {padding-right:580px; white-space:nowrap}
+#hdr h1 {display:inline-block; max-width:100%; font-size:120%; padding:16px 0; margin:0; font-weight:bold; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+#hdr h1 img {margin:-9px 0; display:inline; vertical-align:bottom; border:0}
+#hdr-inner > a, #hdr-inner > h1 a, #hdr-inner > ul > li > a {color:#bbb}
+#backButton {float:left; margin-right:10px; margin-left:-30px; font-size:20px; line-height:20px; margin-top:17px; text-decoration:none}
+
+#mainMenu {margin-left:30px; display:inline; padding:18px 0}
+#userMenu {float:right; padding:18px 0; margin-right:-580px; margin-left:-18px;}
+#userMenu .item-user {font-weight:bold}
+#userMenu .item-user .avatar {vertical-align:middle; margin:-5px 8px -5px 0}
+#userMenu.menu > li {margin-left:18px; text-align:left}
+
+#hdr .button {background:rgba(0, 0, 0, 0.2); border:1px solid transparent; border-radius:4px; color:#bbb; font-size:95%; padding:9px 12px; margin:-7px 0; text-shadow:none}
+#hdr .button:active {background:rgba(0, 0, 0, 0.2)}
+#hdr .button i {color:#333}
+
+
+/* If a light header color is chosen, make the header text dark. */
+.lightHdr #hdr .button {background:rgba(0, 0, 0, 0.1);}
+.lightHdr #hdr .button:active {background:rgba(0, 0, 0, 0.3);}
+.lightHdr #hdr, .lightHdr #hdr a {color:rgba(0, 0, 0, 0.7)}
+.lightHdr #hdr .popupButton, .lightHdr #hdr #notifications {background-color:rgba(0, 0, 0, .1); color:rgba(0, 0, 0, 0.3)}
+
+
+/* Footer */
+#ftr {font-size:90%; color:#bbb; color:rgba(0, 0, 0, 0.5)}
+#ftr-content {padding-top:20px; padding-bottom:20px; background:rgba(255, 255, 255, 0.05);}
+#ftr li {margin-right:10px}
+#ftr a {color:#bbb;}
+#ftr .item-copyright {float:right; margin:0}
+#ftr .item-copyright a {color:#bbb; color:rgba(0, 0, 0, 0.3)}
+
+
+/* Text inputs */
+input[type=text], input[type=password], textarea {color:#bbb; background:#333; border:#ccc 1px solid; padding:3px; border-radius:3px; vertical-align:-1px; margin:0}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {border-color:#999; outline:0; box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.15)}
+.postBody textarea:focus {box-shadow:none}
+
+
+/* Scrubber */
+.hasScrubber {margin-right:170px}
+.scrubberColumn { font-size:95%; float:right; margin-right:-180px; width:150px}
+
+.scrubber {margin:20px 0 20px; padding:0; list-style-type:none}
+.scrubber > li {border-left:5px solid #eee; margin-bottom:1px}
+.scrubber > li:hover {border-left-color:#bbb}
+.scrubber > li a {color:#888}
+.scrubber > li > a {display:block; padding:3px 8px}
+.scrubber > li.selected {border-left-color:#bbb}
+.scrubber li.selected > a {font-weight:bold; color:#bbb}
+
+.scrubber li ul {display:none}
+.scrubber li.selected ul {display:block}
+.scrubber li ul {list-style-type:none; padding:0 0 0 15px; margin:0; font-size:85%}
+.scrubber li ul li.selected a {color:#000}
+
+
+
+/* Buttons */
+.button {background:#333; text-shadow:#5C5C5C 0 0px; color:#bbb; font-weight:bold; border:1px solid #5C5C5C; box-shadow:0 1px 0 rgba(0, 0, 0, 0.09); margin-bottom:1px; -webkit-appearance:none}
+.button:hover, .button:active {color:#bbb; border-color:#6E6E6E}
+.button:active {background-color:#d3d3d3; background-position:0 -40px; color:#333}
+.button.disabled {border-color:#ccc !important; background:#f2f2f2 !important; color:#999 !important; box-shadow:none !important}
+
+
+/* Search boxes */
+.search {float:right}
+.search input.text {width:250px; height:22px; border:1px solid #5C5C5C; color:#bbb; padding-right:30px; padding-left:25px; background:rgba(51, 51, 51, 1) url(icons.png) no-repeat -13px -287px; float:left}
+.search.big input.text {height:22px; border:1px solid #5C5C5C; color:#bbb; font-size:100%; background-position:-13px -287px}
+.search .control-reset {margin-top:1px; margin-left:-25px; margin-right:0}
+.search .popupButton {margin-left:10px; vertical-align:2px}
+
+
+/* Notifications button */
+#hdr .popupWrapper {margin:-5px 0; display:inline-block}
+#hdr .popupButton:hover {text-decoration:none}
+#hdr #notifications {color:rgba(255, 255, 255, 0.4)}
+#hdr #notifications.new, #hdr .active .popupButton {background-color:#bbb; border-bottom-color:transparent}
+#hdr #notifications.new, #hdr .active .popupButton, #hdr .active .popupButton i {color:#444 !important}
+#hdr .item-notifications {margin-right:-10px}
+
+
+/* Avatars */
+.avatar {width:64px; height:64px; vertical-align:middle; border-radius:400px}
+.avatar.thumb {width:20px; height:20px}
+
+
+/* Popup menus */
+.popupMenu {list-style-type:none; padding:6px 0; margin:0}
+.popupMenu li > a, .popupMenu li > span {display:block; padding:3px 25px 3px 35px; overflow:hidden; white-space:nowrap}
+.popupMenu li > a {color:#bbb}
+.popupMenu li > span {color:#888 !important}
+.popupMenu li > a:hover, ul.popupMenu li.selected > a {text-decoration:none; background:#2ECC71; color:#fff !important}
+.popupMenu li > a:hover *, ul.popupMenu li.selected > a * {color:#fff}
+.popupMenu li.sep {border-top:1px solid #ccc; margin:5px}
+.popupMenu li > a i, .popupMenu li > span i {margin-left:-23px; float:left; width:15px; text-align:right; line-height:20px; font-size:14px}
+
+/* Popups */
+.popup {text-shadow:none; background:#333; color:#bbb; border:1px solid #666; border-bottom-width:2px; border-radius:2px; z-index:300}
+.popup h3 {margin:0; padding:10px}
+.withArrow.popup:before {border-color:#666}
+.withArrow.popup:after {border-color:#fff}
+
+.popup.right {border-radius:2px 0 2px 2px}
+.popup.left {border-radius:0 2px 2px 2px}
+
+
+/* "Things" - distinguishable items such as posts, activity items, plugins, and skins. */
+.thing {border:1px solid #bbb; border-width:1px; border-style:solid; border-radius:3px; background:rgba(51, 51, 51, 0.5); box-shadow:0 1px 2px rgba(0, 0, 0, 0.05); position:relative}
+.thing:before {border-color:#bbb}
+.thing:after {border-color:#bbb}
+
+
+/* Generic areas */
+.area, .sheet {border-radius:3px; margin-bottom:20px; margin-top:0; background:#333}
+.area {padding:15px}
+.area.help {padding-top:10px}
+.area h3 {font-size:110%}
+
+/* Member online icon */
+.online {width:9px; height:9px; font-size:9px !important; color:#2ECC71 !important; vertical-align:middle}
+
+
+/* Channels */
+.channel {background:#333; text-decoration:none; color:#bbb !important; text-shadow:none; border-radius:3px; font-size:85%; border:1px solid #bbb; white-space:nowrap; box-shadow:0 1px 0 rgba(0, 0, 0, 0.04); padding:2px 5px}
+a.channel:hover {text-decoration:none; border-color:#aaa}
+
+
+/* Posts */
+.postList, .activityList {list-style-type:none; margin:0; padding:0; position:relative}
+
+.timeMarker {padding:7px 13px; text-transform:uppercase; font-size:85%; letter-spacing:1px; background:#333; color:#bbb; display:inline-block; clear:both; border-radius:3px; margin-bottom:15px}
+
+.post {margin-bottom:15px; padding-left:79px; padding-bottom:2px; position:relative; overflow:hidden}
+.post div.avatar {float:left; margin-left:-79px}
+.postContent:before, .postContent:after {content:" "; border-top-color:transparent !important; border-bottom-color:transparent !important; border-left-color:transparent !important; border-style:solid; border-width:5px; height:0; width:0; left:-11px; top:8px; position:absolute}
+.postContent:after {float:left; left:-10px}
+
+.highlight .postContent {background-color:#ffd}
+.highlight .postContent:after {border-color:#ffd}
+
+.postHeader {margin-bottom:2px; padding:7px 7px 7px 12px; overflow:hidden; color:#888}
+.postHeader h3 {display:inline; font-size:110%; margin:0}
+.postHeader h3, .postHeader h3 a {color:#bbb}
+.postHeader .info {display:inline}
+.postHeader .info > span, .postHeader .info > a {font-size:85%; margin-left:7px; color:#bbb}
+.postHeader .controls {background:#bbb; color:#000; float:right; margin-top:3px}
+
+.postBody {line-height:1.5em; overflow:auto; padding:0px 12px}
+.postBody img {vertical-align:bottom; max-width:100%}
+.postBody ul {list-style-type:disc}
+
+.deleted .postHeader {margin:0; padding:6px 5px 6px 12px}
+.deleted .postHeader * {color:#888}
+.deleted .controls {margin-top:1px}
+.deleted .thing {background:#333; border:0; -webkit-box-shadow:none; box-shadow:none}
+.deleted .thing:before, .deleted .thing:after {display:none}
+
+
+/* Welcome Banner. */
+.banner {padding: 15px; padding-top: 12px; padding-bottom: 3px; background:none; color: #bbb; text-align: center;font-size: 24px;}
+.banner span {text-align: center;font-size: 16px;}
+.banner span a {text-decoration:underline; color:#2ECC71}
+.banner span a:hover {text-decoration:underline; color:#1E7945}
+.banner span a:active {color:#2ECC71}
+#mainMenu > li { margin-right: 16px; margin-bottom: 2px; }
+#mainMenu {margin-left:30px; display:inline; padding:2px 0px 4px 10px; float: left; font-size: 80%;} 
+#mainMenu > li { margin-right: 10px; }
+
+#hdr-content, #body-content, #ftr-content {margin:0 auto; min-width:760px; max-width:1100px; padding:0 30px} 
+
+#userMenu {float:right; padding:18px 0; margin-right:-580px; margin-left:-18px;} 
+#userMenu .item-user {font-weight:bold} #userMenu .item-user .avatar {vertical-align:middle; margin:-5px 8px -5px 0} 
+
+#userMenu.menu > li {
+    margin-left:9px; 
+    text-align:left;
+    max-width: 150px;
+} 
+
+#mainMenu > li { margin-right: 16px; margin-bottom: 2px; }
+#body-content {padding-bottom:20px; padding-top:14px}

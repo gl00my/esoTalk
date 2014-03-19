@@ -32,15 +32,26 @@ class ETSkin_Default extends ETSkin {
 public function handler_init($sender)
 {
 //	$sender->addCSSFile((C("esoTalk.https") ? "https" : "http")."://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700");
-	$sender->addCSSFile("core/skin/base.css", true);
-	$sender->addCSSFile("core/skin/font-awesome.css", true);
-	$sender->addCSSFile($this->getResource("styles.css"), true);
-	if (ET::$session->preference("darkTheme")) {
-		$sender->addCSSFile($this->getResource("dark.css"), true);
+
+	$dark = ET::$session->preference("darkTheme");
+
+	if ($dark) {
+		$sender->addCSSFile($this->getResource("dark/Base.css"), true);
+		$sender->addCSSFile("core/skin/font-awesome.css", true);
+		$sender->addCSSFile($this->getResource("dark/styles.css"), true);
+	} else {
+		$sender->addCSSFile("core/skin/base.css", true);
+		$sender->addCSSFile("core/skin/font-awesome.css", true);
+		$sender->addCSSFile($this->getResource("styles.css"), true);
 	}
+
 	// If we're viewing from a mobile browser, add the mobile CSS and change the master view.
 	if ($isMobile = isMobileBrowser()) {
-		$sender->addCSSFile($this->getResource("mobile.css"), true);
+		if ($dark) {
+			$sender->addCSSFile($this->getResource("dark/mobile.css"), true);
+		} else {
+			$sender->addCSSFile($this->getResource("mobile.css"), true);
+		}
 		$sender->masterView = "mobile.master";
 		$sender->addToHead("<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>");
 	}
