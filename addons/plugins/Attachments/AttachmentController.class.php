@@ -167,6 +167,10 @@ class AttachmentController extends ETController {
 
 		$session = (array)ET::$session->get("attachments");
 		if (isset($session[$attachmentId])) {
+			$attachment = $session[$attachmentId];
+			$model = ET::getInstance("attachmentModel");
+			@unlink($model->path().$attachmentId.$attachment["secret"]);
+			@unlink($model->path().$attachmentId.$attachment["secret"]."_thumb");
 			unset($session[$attachmentId]);
 			ET::$session->store("attachments", $session);
 		}
