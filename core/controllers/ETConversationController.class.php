@@ -1243,6 +1243,7 @@ public function deletePost($postId = false)
 		$attachment = $amodel->getById($aid);
 		$amodel->deleteById($aid);
 		@unlink($amodel->path().$aid.$attachment["secret"]);
+		@unlink($amodel->path().$aid.$attachment["secret"]."_thumb");
 	}
 
 	$res = ET::SQL()
