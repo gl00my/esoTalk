@@ -809,7 +809,7 @@ public function delete($wheres = array())
 				$aid = $row["attachmentId"];
 				$attachment = $amodel->getById($aid);
 				$amodel->deleteById($aid);
-				@unlink($amodel->path().$attachmentId.$attachment["secret"]);
+				@unlink($amodel->path().$aid.$attachment["secret"]);
 			}
 		}
 	}
