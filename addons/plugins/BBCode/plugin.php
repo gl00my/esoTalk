@@ -66,12 +66,12 @@ public function handler_format_beforeFormat($sender)
 	include_once('/usr/share/php-geshi/geshi.php');
 
 	$hideBlock = create_function('&$blockFixedContents, $contents', '
-		$geshi = new GeSHi(htmlspecialchars_decode($contents), "Lua", "/usr/share/php-geshi/geshi");
+		$geshi = new GeSHi(htmlspecialchars_decode($contents, ENT_QUOTES), "Lua", "/usr/share/php-geshi/geshi");
 		$geshi->set_header_type(GESHI_HEADER_PRE);
 		$blockFixedContents[] = $geshi->parse_code();
 		return "</p><pre><code></code></pre><p>";');
 	$hideInline = create_function('&$inlineFixedContents, $contents', '
-		$geshi = new GeSHi(htmlspecialchars_decode($contents), "Lua", "/usr/share/php-geshi/geshi");
+		$geshi = new GeSHi(htmlspecialchars_decode($contents, ENT_QUOTES), "Lua", "/usr/share/php-geshi/geshi");
 		$geshi->set_header_type(GESHI_HEADER_NONE);
 		$inlineFixedContents[] = $geshi->parse_code();
 		return "<code></code>";');
