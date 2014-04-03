@@ -1,3 +1,8 @@
+## This is patched version of esoTalk
+
+This forum software is used in http://instead.syscall.ru project.
+Original project is here: https://github.com/esotalk/esoTalk
+
 ## esoTalk – Fat-free forum software
 
 esoTalk is a free, open-source forum software package built with PHP and MySQL. It is designed to be:
