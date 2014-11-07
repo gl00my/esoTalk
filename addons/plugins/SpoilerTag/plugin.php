@@ -25,17 +25,20 @@ class ETPlugin_SpoilerTag extends ETPlugin {
 	public function handler_format_format( $sender ){
 		// Spoiler - [spoiler:title]text[/spoiler]
 		$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
+//		$regexp = "/(.*?)\n?\[spoiler:?(.*)\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
+
 		while (preg_match($regexp, $sender->content)) {
 			$sender->content = preg_replace($regexp,
+//				"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2</span><div class=\"content\">$3</div></div><p>", $sender->content);
 				"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">$4</div></div><p>", $sender->content);
 		}
 		
 		// NSFW - [nsfw:title]text[/nsfw]
-		$regexp = "/(.*?)\n?\[nsfw(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/nsfw\]\n{0,2}/is";
-		while (preg_match($regexp, $sender->content)) {
-			$sender->content = preg_replace($regexp,
-				"$1</p><div class=\"nsfw\"><span>".T("NSFW")."</span> <span class=\"title\">$2$3</span><div class=\"content\">$4</div></div><p>", $sender->content);
-		}
+//		$regexp = "/(.*?)\n?\[nsfw(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/nsfw\]\n{0,2}/is";
+//		while (preg_match($regexp, $sender->content)) {
+//			$sender->content = preg_replace($regexp,
+//				"$1</p><div class=\"nsfw\"><span>".T("NSFW")."</span> <span class=\"title\">$2$3</span><div class=\"content\">$4</div></div><p>", $sender->content);
+//		}
 	}
 }
 
