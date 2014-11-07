@@ -11,8 +11,38 @@ $db_name=$config["esoTalk.database.dbName"];
 
 $url="http://instead.syscall.ru/talk/";
 
+/**
+ * Removes invalid XML
+ *
+ * @access public
+ * @param string $value
+ * @return string
+ */
+function stripInvalidXml($value)
+{
+	$ret = "";
+	$current;
+	if (empty($value)) {
+		return $ret;
+	}
+
+	$length = strlen($value);
+	for ($i=0; $i < $length; $i++) {
+		$current = ord($value{$i});
+		if (($current == 0x9) || ($current == 0xA) ||
+			($current == 0xD) || (($current >= 0x20) && ($current <= 0xD7FF)) ||
+			(($current >= 0xE000) && ($current <= 0xFFFD)) ||
+			(($current >= 0x10000) && ($current <= 0x10FFFF))) {
+			$ret .= chr($current);
+		} else {
+			$ret .= " ";
+		}
+	}
+	return $ret;
+}
 function sanitizeHTML($value)
 {
+	$value = stripInvalidXml($value);
 	$value=preg_replace('(\[[ \t]*spoiler[ \t]*\].*\[[ \t]*/spoiler[ \t]*\])u', '*spoiler*', $value);
 	return preg_replace('(\[[^]]*\])u', '', $value);
 }
