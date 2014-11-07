@@ -207,6 +207,7 @@ public function index($conversationId = false, $year = false, $month = false)
 			$this->addJSLanguage("Starred", "Unstarred", "message.confirmLeave", "message.confirmDiscardReply",
 				"Mute conversation", "Unmute conversation", "Controls", "Follow", "Following");
 		}
+		$this->addJSLanguage("Load more posts");
 		$this->addJSVar("postsPerPage", C("esoTalk.conversation.postsPerPage"));
 		$this->addJSVar("conversationUpdateIntervalStart", C("esoTalk.conversation.updateIntervalStart"));
 		$this->addJSVar("conversationUpdateIntervalMultiplier", C("esoTalk.conversation.updateIntervalMultiplier"));

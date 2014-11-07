@@ -388,6 +388,7 @@ $definitions["View more"] = "Ещё...";
 $definitions["View your profile"] = "Просмотреть профиль";
 $definitions["View"] = "Просмотр";
 $definitions["Viewing: %s"] = "просматривает: %s";
+$definitions["Viewing %s"] = "просматривает %s";
 $definitions["viewingPosts"] = "<b>%s-%s</b> сообщения %s";
 
 $definitions["Warning"] = "Ой, что-то не так...";
@@ -594,6 +595,7 @@ $definitions["Spoiler!"] = "Спойлер!";
 $definitions["Mark as unread"] = "Отметить как непрочитанную";
 
 $definitions["Older"] = "Старые";
+$definitions["Load more posts"] = "Подгрузить еще";
 $definitions["Newer"] = "Новые";
 $definitions["Change your avatar on <a href='http://gravatar.com' target='_blank'>Gravatar.com</a>."] = "Поменять аватарку на <a href='http://gravatar.com' target='_blank'>Gravatar.com</a>.";
 $definitions["Don't allow other users to see when I am online"] = "Не показывать другим пользователям, что вы на форуме."; 
