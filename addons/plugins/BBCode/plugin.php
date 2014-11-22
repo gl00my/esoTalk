@@ -34,9 +34,11 @@ public function handler_conversationController_renderBefore($sender)
 {
 	$sender->addJSFile($this->getResource("bbcode.js"));
 	$sender->addCSSFile($this->getResource("bbcode.css"));
+
+	$sender->addCSSFile($this->getResource("spoiler.css"));
+	$sender->addJSFile($this->getResource("spoiler.js"));
+
 }
-
-
 /**
  * Add an event handler to the "getEditControls" method of the conversation controller to add BBCode
  * formatting buttons to the edit controls.
@@ -64,6 +66,12 @@ public function handler_conversationController_getEditControls($sender, &$contro
 public function handler_format_beforeFormat($sender)
 {
 	include_once('/usr/share/php-geshi/geshi.php');
+
+	$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
+	while (preg_match($regexp, $sender->content)) {
+		$sender->content = preg_replace($regexp,
+			"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">[code]$4[/code]</div></div><p>", $sender->content);
+	}
 
 	$hideBlock = create_function('&$blockFixedContents, $contents', '
 		$geshi = new GeSHi(htmlspecialchars_decode($contents, ENT_QUOTES), "Lua", "/usr/share/php-geshi/geshi");
@@ -104,6 +112,7 @@ public function handler_format_format($sender)
 	// \[ (i|b|color|url|somethingelse) \=? ([^]]+)? \] (?: ([^]]*) \[\/\1\] )
 
 	// Images: [img]url[/img]
+
 	$replacement = $sender->inline ? "[image]" : "<img src='$1' alt='-image-'/>";
 	$sender->content = preg_replace("/\[img\](.*?)\[\/img\]/i", $replacement, $sender->content);
 
