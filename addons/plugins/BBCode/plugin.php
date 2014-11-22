@@ -70,7 +70,7 @@ public function handler_format_beforeFormat($sender)
 	$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
 	while (preg_match($regexp, $sender->content)) {
 		$sender->content = preg_replace($regexp,
-			"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">[code]$4[/code]</div></div><p>", $sender->content);
+			"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">\n$4\n</div></div><p>", $sender->content);
 	}
 
 	$hideBlock = create_function('&$blockFixedContents, $contents', '
