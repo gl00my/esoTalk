@@ -67,11 +67,6 @@ public function handler_format_beforeFormat($sender)
 {
 	include_once('/usr/share/php-geshi/geshi.php');
 
-	$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
-	while (preg_match($regexp, $sender->content)) {
-		$sender->content = preg_replace($regexp,
-			"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">\n$4\n</div></div><p>", $sender->content);
-	}
 
 	$hideBlock = create_function('&$blockFixedContents, $contents', '
 		$geshi = new GeSHi(htmlspecialchars_decode($contents, ENT_QUOTES), "Lua", "/usr/share/php-geshi/geshi");
@@ -95,6 +90,12 @@ public function handler_format_beforeFormat($sender)
 
 		// Inline-level [fixed] tags will become <code>.
 	$sender->content = preg_replace("/\[code\]\n?(.*?)\n?\[\/code]/ise", "\$hideInline(\$this->inlineFixedContents, '$1')", $sender->content);
+
+	$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
+	while (preg_match($regexp, $sender->content)) {
+		$sender->content = preg_replace($regexp,
+			"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">$4\n</div></div><p>", $sender->content);
+	}
 }
 
 
