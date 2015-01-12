@@ -320,6 +320,11 @@ addReply: function() {
 	// Disable the reply/draft buttons.
 	$("#reply .postReply, #reply .saveDraft").disable();
 
+	// epoxa start
+	window.dirtyFlag = true;
+	window.postInProgress = true;
+	// epoxa end
+
 	// Make the ajax request.
 	$.ETAjax({
 		url: "conversation/reply.ajax/"+ETConversation.id,
@@ -364,6 +369,9 @@ addReply: function() {
 		},
 		complete: function() {
 			hideLoadingOverlay("reply", false);
+			// epoxa start
+			window.postInProgress = false;
+			// epoxa end
 		}
 	});
 },
@@ -473,12 +481,24 @@ update: function() {
 
 	// Don't do this if we're searching, or if we haven't loaded the end of the conversation.
 	if (ETConversation.searchString || ETScrubber.loadedItems.indexOf(ETConversation.postCount - 1) == -1) return;
+	// epoxa start
+	if (window.postInProgress) {
+		ETConversation.updateInterval.reset(ET.conversationUpdateIntervalStart);
+		return;
+	}
+	window.dirtyFlag = false;
+	// epoxa end
 
 	// Make the request for post data.
 	$.ETAjax({
 		url: "conversation/index.ajax/"+ETConversation.id+"/"+ETConversation.postCount,
 		success: function(data) {
-
+		// epoxa start
+		if (window.dirtyFlag) {
+			var interval = ET.conversationUpdateIntervalStart;
+		}
+		else
+		// epoxa end
 			// If there are new posts, add them.
 			if (ETConversation.postCount < data.countPosts) {
 				ETConversation.postCount = data.countPosts;
