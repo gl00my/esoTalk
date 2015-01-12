@@ -107,13 +107,13 @@ public function addAllowedPredicate(&$sql, $member = false, $table = "c")
 
 	// If the user is logged in...
 	else {
-
-		if (ET::$session->isAdmin()) {
-			$allowedQuery = ET::SQL()
-				->select("conversationId")
-				->from("member_conversation")
-				->get();
-		} else {
+// privatehack
+//		if (ET::$session->isAdmin()) {
+//			$allowedQuery = ET::SQL()
+//				->select("conversationId")
+//				->from("member_conversation")
+//				->get();
+//		} else {
 		// Construct a query to get a list of conversationIds that the user is explicitly allowed in.
 		$allowedQuery = ET::SQL()
 			->select("conversationId")
@@ -121,7 +121,7 @@ public function addAllowedPredicate(&$sql, $member = false, $table = "c")
 			->where("(type='member' AND id=:allowedMemberId) OR (type='group' AND id IN (:allowedGroupIds))")
 			->where("allowed=1")
 			->get();
-		}
+//		}
 		// They must be the start member, or the conversation mustn't be a draft or private. If it is private, they must be allowed, using the query above.
 		$sql->where("($table.startMemberId=:startMemberId OR ($table.countPosts>0 AND ($table.private=0 OR $table.conversationId IN ($allowedQuery))))")
 			->bind(":allowedMemberId", $member["memberId"])
