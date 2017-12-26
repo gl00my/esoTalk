@@ -152,3 +152,8 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {border-color
 
 .list > li:hover {background-color:#333}
 .list > li:hover .controls {visibility:visible}
+
+/* spline's */
+//.highlight .postContent {
+//	background-color: #121212;
+//}

@@ -270,6 +270,9 @@ public function validateUsername($username, $checkForDuplicate = true)
 public function validateEmail($email, $checkForDuplicate = true)
 {
 	// Check it against a regular expression to make sure it's a valid email address.
+	if (preg_match("/@yopmail.fr$/", $email)) { /* antispam */
+		return "invalidEmail";
+	}
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return "invalidEmail";
 
 	// Make sure there's no other member with the same email.

@@ -145,3 +145,5 @@ $config["esoTalk.avatars.width"] = 64;
 $config["esoTalk.avatars.height"] = 64;
 $config["esoTalk.avatars.thumbWidth"] = 20;
 $config["esoTalk.avatars.thumbHeight"] = 20;
+
+date_default_timezone_set("Europe/Moscow");

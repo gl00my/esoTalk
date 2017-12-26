@@ -41,7 +41,7 @@ span.highlight {background:#fdef34; border:1px solid #fcef98; padding:1px 3px; b
 <span class='action'><span class='name'>Toby</span> posted in <a href=''>a conversation</a>.</span> */
 .action {color:#888}
 .action img.avatar {vertical-align:-6px; margin-right:3px}
-.action .name, .action a, .action strong {color:#444; font-weight:bold}
+.action .name, .action a, .action strong {color:#888; font-weight:bold}
 
 
 /* Body */
@@ -422,8 +422,10 @@ a.deleteLink:hover {color:#f00 !important; text-decoration:line-through}
 
 
 /* Scrubber "load more items" areas */
-.scrubberMore {text-align:center; background:#f4f4f4 url(split.png) repeat-x; height:56px; margin:35px 0; margin-left:-21px}
-.scrubberMore a {display:block; padding:20px; color:#aaa; color:rgba(0, 0, 0, 0.5)}
+/* .scrubberMore {text-align:center; background:#f4f4f4 url(split.png) repeat-x; height:56px; margin:35px 0; margin-left:-21px} */
+.scrubberMore {text-align:center; background:#121212}
+/* .scrubberMore a {display:block; padding:20px; color:#aaa; color:rgba(0, 0, 0, 0.5)} */
+.scrubberMore a {display:block; padding:20px; color:#aaa;}
 .scrubberMore.loading a {background:url(loading.gif) no-repeat center center; text-indent:-9999px}
 .list .scrubberMore {border:0; padding:0}
 .list .scrubberMore:hover {background-color:transparent}
@@ -463,7 +465,7 @@ a.deleteLink:hover {color:#f00 !important; text-decoration:line-through}
 /* Post content (code, quotes, headers) */
 .postBody h4 {margin:1.2em 0 0.8em; font-size:130%; font-weight:normal}
 
-blockquote {background:#333; background:rgba(0, 0, 0, 0.08); margin:0 -12px 1em; padding:5px 7px 1px 36px; color:#555; position:relative}
+blockquote {background:#333; background:rgba(0, 0, 0, 0.08); margin:0 -12px 1em; padding:5px 7px 1px 36px; color:#33aaaa; position:relative}
 blockquote cite {display:inline; font-style:normal; font-weight:bold; margin-right:5px}
 blockquote cite a {color:#bbb}
 blockquote p {margin-bottom:0.5em}

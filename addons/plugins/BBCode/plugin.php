@@ -91,11 +91,11 @@ public function handler_format_beforeFormat($sender)
 		// Inline-level [fixed] tags will become <code>.
 	$sender->content = preg_replace("/\[code\]\n?(.*?)\n?\[\/code]/ise", "\$hideInline(\$this->inlineFixedContents, '$1')", $sender->content);
 
-//	$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
-//	while (preg_match($regexp, $sender->content)) {
-//		$sender->content = preg_replace($regexp,
-//			"$1</p><div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">$4\n</div></div><p>", $sender->content);
-//	}
+	$regexp = "/([^\n])\[\/spoiler\]/i";
+
+	while (preg_match($regexp, $sender->content)) {
+		$sender->content = preg_replace($regexp, "$1\n[/spoiler]", $sender->content);
+	}
 }
 
 
@@ -132,6 +132,13 @@ public function handler_format_format($sender)
 	// Headers: [h]header[/h]
 	$replacement = $sender->inline ? "<b>$1</b>" : "</p><h4>$1</h4><p>";
 	$sender->content = preg_replace("/\[h\](.*?)\[\/h\]/", $replacement, $sender->content);
+
+//	$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
+//	while (preg_match($regexp, $sender->content)) {
+//		$sender->content = preg_replace($regexp,
+//			"$1\n<div class=\"spoiler\"><span>".T("Spoiler!")."</span> <span class=\"title\">$2$3</span><div class=\"content\">$4\n</div></div>", $sender->content);
+//	}
+
 }
 
 
@@ -162,6 +169,7 @@ public function linksCallback($matches)
  */
 public function handler_format_afterFormat($sender)
 {
+
 	$regexp = "/(.*?)\n?\[spoiler(?:(?::|=)(.*?)(]?))?\]\n?(.*?)\n?\[\/spoiler\]\n{0,2}/is";
 	while (preg_match($regexp, $sender->content)) {
 		$sender->content = preg_replace($regexp,

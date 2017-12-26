@@ -179,8 +179,12 @@ a.channel:hover {text-decoration:none; border-color:#aaa}
 .postContent:before, .postContent:after {content:" "; border-top-color:transparent !important; border-bottom-color:transparent !important; border-left-color:transparent !important; border-style:solid; border-width:5px; height:0; width:0; left:-11px; top:8px; position:absolute}
 .postContent:after {float:left; left:-10px}
 
-.highlight .postContent {background-color:#4f4f4f}
+/* .highlight .postContent {background-color:#4f4f4f}
 .highlight .postContent:after {border-color:#44d4d4}
+*/
+.highlight .postContent {background-color:#121212}
+.highlight .postContent:after {border-color:#121212}
+
 
 .postHeader {margin-bottom:2px; padding:7px 7px 7px 12px; overflow:hidden; color:#888}
 .postHeader h3 {display:inline; font-size:110%; margin:0}

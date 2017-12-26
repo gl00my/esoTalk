@@ -341,7 +341,7 @@ $definitions["Start a conversation"] = "Начать обсуждение";
 $definitions["Start a new conversation"] = "Начать новое обсуждение";
 $definitions["Start a private conversation with %s"] = "Начать личное обсуждение с %s";
 $definitions["Start Conversation"] = "Начать обсуждение";
-$definitions["Starting a conversation"] = "<b>начинает обсуждение</b>";
+$definitions["Starting a conversation"] = "начинает обсуждение";
 $definitions["Statistics"] = "Статистика";
 $definitions["statistic.conversation.plural"] = "Обсуждений: %s";
 $definitions["statistic.conversation"] = "Обсуждение: %s";
@@ -590,7 +590,7 @@ $definitions["gambit.active last ? days"] = "{$definitions["gambit.active"]} {$d
 // Usually you just need to change the "has" and "repl".
 $definitions["gambit.gambitHasNReplies"] = "/^содержит *(?<a>>|<|>=|<=)? *(?<b>\d+) *комм/";
 
-$definitions["Old Forum"] = "Старый Форум";
+$definitions["Club"] = "Клуб";
 $definitions["Spoiler!"] = "Спойлер!";
 $definitions["Mark as unread"] = "Отметить как непрочитанную";
 

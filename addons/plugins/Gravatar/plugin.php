@@ -37,7 +37,8 @@ class ETPlugin_Gravatar extends ETPlugin {
 				if (!$default or empty($member)) $default = $esoTalkDefault;
 
 				$protocol = C("esoTalk.https") ? "https" : "http";
-				$url = "$protocol://www.gravatar.com/avatar/".md5(strtolower(trim($member["email"])))."?d=".urlencode($default)."&s=64";
+				// $url = "$protocol://www.gravatar.com/avatar/".md5(strtolower(trim($member["email"])))."?d=".urlencode($default)."&s=64";
+				$url = "//www.gravatar.com/avatar/".md5(strtolower(trim($member["email"])))."?d=".urlencode($default)."&s=64";
 
 			}
 

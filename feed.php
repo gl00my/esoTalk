@@ -43,7 +43,7 @@ function stripInvalidXml($value)
 function sanitizeHTML($value)
 {
 	$value = stripInvalidXml($value);
-	$value=preg_replace('(\[[ \t]*spoiler[ \t]*\].*\[[ \t]*/spoiler[ \t]*\])u', '*spoiler*', $value);
+	$value=preg_replace('(\[[ \t]*spoiler[ \t]*\](.|\n)*\[[ \t]*/spoiler[ \t]*\])u', '*spoiler*', $value);
 	return preg_replace('(\[[^]]*\])u', '', $value);
 }
 
@@ -91,6 +91,7 @@ while (list($postId, $title, $member, $content, $time) = mysql_fetch_row($result
     xmlwriter_start_element ($xml, 'description'); xmlwriter_text ($xml, sanitizeHTML($content)); xmlwriter_end_element ($xml);
     xmlwriter_start_element ($xml, 'pubDate'); xmlwriter_text ($xml, date("D, d M Y H:i:s O", $time)); xmlwriter_end_element ($xml);
     xmlwriter_start_element ($xml, 'author'); xmlwriter_text ($xml, sanitizeHTML($member)); xmlwriter_end_element ($xml);
+    xmlwriter_start_element ($xml, 'guid'); xmlwriter_text ($xml, sanitizeHTML($postId)); xmlwriter_end_element ($xml);
     xmlwriter_end_element ($xml);
 }
 mysql_close($con);
