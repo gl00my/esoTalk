@@ -80,7 +80,7 @@ xmlwriter_end_element ($xml);
  mysql_select_db($db_name) or die ('Cant select database.');
  mysql_set_charset('utf8');
 
-$result = mysql_query("SELECT t.postId, t.title, t.username, t.content, t.time FROM (SELECT p.postId, c.title, m.username, p.content, p.time FROM et_post p LEFT JOIN et_conversation c USING (conversationId) INNER JOIN et_member m ON (m.memberId=p.memberId) WHERE c.private=0 AND c.countPosts>0 AND p.deleteMemberId IS NULL ORDER BY p.time DESC LIMIT 100) t GROUP BY t.title ORDER BY t.time DESC LIMIT 20")
+$result = mysql_query("SELECT t.postId, t.title, t.username, t.content, t.time FROM (SELECT p.postId, c.title, m.username, p.content, p.time FROM et_post p LEFT JOIN et_conversation c USING (conversationId) INNER JOIN et_member m ON (m.memberId=p.memberId) WHERE c.private=0 AND c.countPosts>0 AND p.deleteMemberId IS NULL ORDER BY p.time DESC LIMIT 200) t GROUP BY t.title ORDER BY t.time DESC LIMIT 20")
     or die ("Can't do select." . mysql_error());
 
 while (list($postId, $title, $member, $content, $time) = mysql_fetch_row($result)) {
